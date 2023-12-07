@@ -20,7 +20,7 @@ Welcome, wanderer, to the Viking Runes Oracle – an ancient and powerful Stream
 
 Begin your quest by invoking the repository:
    
- `git clone https://github.com/your-username/viking-runes-oracle-streamlit.git`
+ `git clone https://github.com/cha0smagick/viking-runes-oracle.git`
  `cd viking-runes-oracle`
 
 Channel the energies with the required incantations:
