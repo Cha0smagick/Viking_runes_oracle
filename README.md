@@ -29,7 +29,7 @@ Channel the energies with the required incantations:
 
 Unveil the oracle by uttering the sacred command:
 
- `streamlit run app.py`
+ `streamlit run viking-runes-oracle-streamlit.py`
 
 ## Runic Inquiry
 
