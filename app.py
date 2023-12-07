@@ -60,7 +60,27 @@ heimdalls_aett = RuneSet("Heimdall's", "Heimdall", [hagalaz, nauthiz, isa, jera,
 tyrs_aett = RuneSet("Tyr's", "Tyr", [tiwaz, berkana, ehwaz, mannaz, laguz, ingwaz, othala, dagaz])
 
 # Streamlit App
-st.title("Rune Sets Explorer")
+st.title("Viking Rune Oracle")
+st.markdown(
+    """
+    
+    **Author:** cha0smagick the Techno Wizard  
+    **Created for the blog:** [El Rincon Paranormal](https://elrinconparanormal.blogspot.com)  
+    **Project's main page:** [Technowizard Cha0smagick's Viking Runes Oracle](hhttps://elrinconparanormal.blogspot.com/2023/12)  
+    
+    **Donate crypto to support the project:**
+    
+    - Bitcoin: 3KcF1yrY44smTJpVW68m8dw8q64kPtzvtX
+    - Litecoin: LME9oq8BRQ6dDdqEKg3HJB9UL6byhJka1X
+    - Gridcoin: RyAcDpYRMWfDHLTizCTLzy58qBgzcfo5eZ
+    - Dodgecoin: DDSxowLFPyBHVdV16hGhWdhyfa8ors3VPd
+    - Blackcoin: B62pVSG1hjvBDbCeKbEnYmKxUg5rsnZKwt
+    - Dash: Xj1MjAgxZPRqysMHox4sUV9XYZixrsk4e6
+    - Peercoin: PA43iLNooKU76u4yPTtL5j97W6zwWkwxV2
+    - Syscoin: sys1qg6npncq4xe7ruz4e4xlnvuyrzj90qvv3gg0yag
+    
+    """
+)
 
 # User input to select Aett
 selected_aett = st.selectbox("Select Aett", ["Freyr's Aett", "Heimdall's Aett", "Tyr's Aett"])
@@ -85,9 +105,8 @@ if st.button("Ask the Runes"):
     selected_runes = random.sample(display_aett.runes, num_runes)
     
     # Display ASCII representation of selected runes
-    st.write("Runes:")
-    for rune in selected_runes:
-        st.write(rune.ascii_art)
+    runes_display = "  ".join([rune.ascii_art for rune in selected_runes])
+    st.markdown(f"<p style='font-size:40px; font-weight:bold; text-align:center;'>{runes_display}</p>", unsafe_allow_html=True)
     
     st.success("Rune Reading Results:")
     
