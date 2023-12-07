@@ -4,10 +4,11 @@ import random
 # Rune Symbols And Meanings
 
 class Rune:
-    def __init__(self, name, description, keywords):
+    def __init__(self, name, description, keywords, ascii_art):
         self.name = name
         self.description = description
         self.keywords = keywords
+        self.ascii_art = ascii_art
 
     def __str__(self):
         return f"{self.name} - {self.description}\nKeywords: {', '.join(self.keywords)}"
@@ -24,34 +25,34 @@ class RuneSet:
 
 
 # Define runes for Freyr's Aett
-fehu = Rune("Fehu", "Cattle/Wealth", ["Abundance", "Luck", "Hope", "Prosperity", "Wealth", "Fortune"])
-uruz = Rune("Uruz", "Ox", ["Strength", "Endurance", "Health", "Courage", "Vigour", "Vitality", "Force", "Perseverance"])
-thurisaz = Rune("Thurisaz", "Mallet/Giant/Thorn", ["Defence", "Challenge", "Danger", "Protection", "Attack", "Strength"])
-ansuz = Rune("Ansuz", "Message", ["Revelation", "Signs", "Visions", "Insight", "Message", "Knowledge", "Communication"])
-raidho = Rune("Raidho", "Journey", ["Progress", "Movement", "Evolution", "Perspective", "Journey", "Travel"])
-kenaz = Rune("Kenaz", "Torch", ["Enlightenment", "Knowledge", "Comprehension", "Insight", "Illumination", "Calling", "Purpose", "Idea"])
-gebo = Rune("Gebo", "Gift", ["Generosity", "Partnership", "Gifts", "Talents", "Charity", "Service", "Assistance", "Luck", "Fortune"])
-wunjo = Rune("Wunjo", "Joy", ["Pleasure", "Joy", "Feast", "Celebration", "Comfort", "Belonging", "Community", "Success", "Festivities"])
+fehu = Rune("Fehu", "Cattle/Wealth", ["Abundance", "Luck", "Hope", "Prosperity", "Wealth", "Fortune"], "/ᚠ/")
+uruz = Rune("Uruz", "Ox", ["Strength", "Endurance", "Health", "Courage", "Vigour", "Vitality", "Force", "Perseverance"], "/ᚢ/")
+thurisaz = Rune("Thurisaz", "Mallet/Giant/Thorn", ["Defence", "Challenge", "Danger", "Protection", "Attack", "Strength"], "/ᚦ/")
+ansuz = Rune("Ansuz", "Message", ["Revelation", "Signs", "Visions", "Insight", "Message", "Knowledge", "Communication"], "/ᚨ/")
+raidho = Rune("Raidho", "Journey", ["Progress", "Movement", "Evolution", "Perspective", "Journey", "Travel"], "/ᚱ/")
+kenaz = Rune("Kenaz", "Torch", ["Enlightenment", "Knowledge", "Comprehension", "Insight", "Illumination", "Calling", "Purpose", "Idea"], "/ᚲ/")
+gebo = Rune("Gebo", "Gift", ["Generosity", "Partnership", "Gifts", "Talents", "Charity", "Service", "Assistance", "Luck", "Fortune"], "/ᚷ/")
+wunjo = Rune("Wunjo", "Joy", ["Pleasure", "Joy", "Feast", "Celebration", "Comfort", "Belonging", "Community", "Success", "Festivities"], "/ᚹ/")
 
 # Define runes for Heimdall's Aett
-hagalaz = Rune("Hagalaz", "Hail", ["Destruction", "Natural Wrath", "Uncontrolled Forces", "Testing", "Change", "External Input"])
-nauthiz = Rune("Nauthiz", "Needs", ["Need", "Restriction", "Disagreements", "Resistance", "Survival", "Necessity", "Lacking"])
-isa = Rune("Isa", "Ice", ["Suspension", "Delay", "Stillness", "Frustration", "Blocks", "Pause", "Waiting"])
-jera = Rune("Jera", "Harvest", ["Year", "Conclusion", "Harvest", "Life Cycle", "Endings and Beginnings", "Abundance", "Learnings", "Growth"])
-eihwaz = Rune("Eihwaz", "Yew", ["Connection", "Inspiration", "Endurance", "Sacred Knowledge", "Protection", "Life Cycle’s", "Divinity"])
-perthro = Rune("Perthro", "Destiny", ["Fate", "Mysteries", "Occult", "Feminine Fertility", "Chance", "Fortune", "Mysticism", "Unknown"])
-algiz = Rune("Algiz", "Elk", ["Protection", "Guardian", "Awakening", "Courage", "Defence", "Instincts"])
-sowilo = Rune("Sowilo", "Sun", ["Success", "Vitality", "Inspiration", "Justice", "Success", "Joy", "Happiness", "Abundance"])
+hagalaz = Rune("Hagalaz", "Hail", ["Destruction", "Natural Wrath", "Uncontrolled Forces", "Testing", "Change", "External Input"], "/ᚺ/")
+nauthiz = Rune("Nauthiz", "Needs", ["Need", "Restriction", "Disagreements", "Resistance", "Survival", "Necessity", "Lacking"], "/ᚾ/")
+isa = Rune("Isa", "Ice", ["Suspension", "Delay", "Stillness", "Frustration", "Blocks", "Pause", "Waiting"], "/ᛁ/")
+jera = Rune("Jera", "Harvest", ["Year", "Conclusion", "Harvest", "Life Cycle", "Endings and Beginnings", "Abundance", "Learnings", "Growth"], "/ᛃ/")
+eihwaz = Rune("Eihwaz", "Yew", ["Connection", "Inspiration", "Endurance", "Sacred Knowledge", "Protection", "Life Cycle’s", "Divinity"], "/ᛇ/")
+perthro = Rune("Perthro", "Destiny", ["Fate", "Mysteries", "Occult", "Feminine Fertility", "Chance", "Fortune", "Mysticism", "Unknown"], "/ᛈ/")
+algiz = Rune("Algiz", "Elk", ["Protection", "Guardian", "Awakening", "Courage", "Defence", "Instincts"], "/ᛉ/")
+sowilo = Rune("Sowilo", "Sun", ["Success", "Vitality", "Inspiration", "Justice", "Success", "Joy", "Happiness", "Abundance"], "/ᛊ/")
 
 # Define runes for Tyr's Aett
-tiwaz = Rune("Tiwaz", "Victory", ["Leadership", "Rationality", "Victory", "Honour", "Bravery", "Courage", "Strength", "Perseverance", "Endurance"])
-berkana = Rune("Berkana", "Birch", ["Fertility", "Growth", "Renewal", "New Beginnings", "Birth", "Creation", "New Projects", "Creativity"])
-ehwaz = Rune("Ehwaz", "Horse", ["Progress", "Movement", "Harmony", "Trust", "Loyalty", "Friendship", "Assistance", "Duality", "Animal Instincts"])
-mannaz = Rune("Mannaz", "Man", ["Humanity", "Collective", "Mortality", "Community", "Relationships", "Morals", "Values"])
-laguz = Rune("Laguz", "Lake", ["Water", "Intuition", "Imagination", "Healing", "Dreams", "Mysteries", "Insight", "Instinct", "Knowing"])
-ingwaz = Rune("Ingwaz", "Fertility", ["Fertility", "Virility", "Inner Growth", "Virtue", "Peace", "Harmony"])
-othala = Rune("Othala", "Heritage", ["Legacy", "Inheritance", "Spiritual Growth", "Abundance", "Values", "Contribution"])
-dagaz = Rune("Dagaz", "Dawn", ["Day", "Awakening", "Consciousness", "Clarity", "Hope", "Balance", "Growth", "New Cycles"])
+tiwaz = Rune("Tiwaz", "Victory", ["Leadership", "Rationality", "Victory", "Honour", "Bravery", "Courage", "Strength", "Perseverance", "Endurance"], "/ᛏ/")
+berkana = Rune("Berkana", "Birch", ["Fertility", "Growth", "Renewal", "New Beginnings", "Birth", "Creation", "New Projects", "Creativity"], "/ᛒ/")
+ehwaz = Rune("Ehwaz", "Horse", ["Progress", "Movement", "Harmony", "Trust", "Loyalty", "Friendship", "Assistance", "Duality", "Animal Instincts"], "/ᛖ/")
+mannaz = Rune("Mannaz", "Man", ["Humanity", "Collective", "Mortality", "Community", "Relationships", "Morals", "Values"], "/ᛗ/")
+laguz = Rune("Laguz", "Lake", ["Water", "Intuition", "Imagination", "Healing", "Dreams", "Mysteries", "Insight", "Instinct", "Knowing"], "/ᛚ/")
+ingwaz = Rune("Ingwaz", "Fertility", ["Fertility", "Virility", "Inner Growth", "Virtue", "Peace", "Harmony"], "/ᛜ/")
+othala = Rune("Othala", "Heritage", ["Legacy", "Inheritance", "Spiritual Growth", "Abundance", "Values", "Contribution"], "/ᛟ/")
+dagaz = Rune("Dagaz", "Dawn", ["Day", "Awakening", "Consciousness", "Clarity", "Hope", "Balance", "Growth", "New Cycles"], "/ᛞ/")
 
 # Create rune sets
 freyrs_aett = RuneSet("Freyr's", "Freyr", [fehu, uruz, thurisaz, ansuz, raidho, kenaz, gebo, wunjo])
@@ -62,32 +63,39 @@ tyrs_aett = RuneSet("Tyr's", "Tyr", [tiwaz, berkana, ehwaz, mannaz, laguz, ingwa
 st.title("Rune Sets Explorer")
 
 # User input to select Aett
-selected_aett = st.selectbox("Select Aett", [freyrs_aett.name, heimdalls_aett.name, tyrs_aett.name])
-
-# Display selected Aett
-if selected_aett == freyrs_aett.name:
-    display_aett = freyrs_aett
-elif selected_aett == heimdalls_aett.name:
-    display_aett = heimdalls_aett
-else:
-    display_aett = tyrs_aett
-
-st.header(display_aett.name)
-st.write(f"{display_aett.aett} Aett")
+selected_aett = st.selectbox("Select Aett", ["Freyr's Aett", "Heimdall's Aett", "Tyr's Aett"])
 
 # User input to select the number of runes for the reading
-num_runes = st.selectbox("Select the number of runes", [1, 2, 3])
+num_runes = st.select_slider("Select the number of runes", [1, 2, 3])
 
 # Button to perform a rune reading
-if st.button("Make a Trow"):
+if st.button("Ask a question"):
+    # Logic to perform a rune reading based on the selected Aett
+    if selected_aett == "Freyr's Aett":
+        display_aett = freyrs_aett
+    elif selected_aett == "Heimdall's Aett":
+        display_aett = heimdalls_aett
+    elif selected_aett == "Tyr's Aett":
+        display_aett = tyrs_aett
+    
     # Logic to perform a rune reading based on the selected number of runes
     selected_runes = random.sample(display_aett.runes, num_runes)
     
-    st.success("Trown Results:")
+    # Display ASCII representation of selected runes
+    st.write("Runes:")
+    for rune in selected_runes:
+        st.write(rune.ascii_art)
+    
+    st.success("Trown results: ")
     
     for i, rune in enumerate(selected_runes):
         # Determine if the rune is upright or reversed
         orientation = "Upwards" if random.choice([True, False]) else "Backwards"
         
-        # Display the rune, its description, keywords, order, and orientation
-        st.write(f"{i+1}. {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+        # Display the rune, its description, keywords, order, and orientation with appropriate prefix
+        if num_runes == 1:
+            st.write(f"Trown result: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+        elif num_runes == 2:
+            st.write(f"{'Past' if i == 0 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+        elif num_runes == 3:
+            st.write(f"{'Past' if i == 0 else 'Present' if i == 1 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
