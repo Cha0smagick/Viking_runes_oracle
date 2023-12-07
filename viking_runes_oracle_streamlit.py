@@ -79,9 +79,15 @@ st.write(f"{display_aett.aett} Aett")
 num_runes = st.selectbox("Select the number of runes", [1, 2, 3])
 
 # Button to perform a rune reading
-if st.button("Realizar Tirada"):
+if st.button("Make a Trow"):
     # Logic to perform a rune reading based on the selected number of runes
     selected_runes = random.sample(display_aett.runes, num_runes)
-    st.success("Tirada Realizada:")
-    for rune in selected_runes:
-        st.write(f"- {rune.name}")
+    
+    st.success("Trow Results:")
+    
+    for i, rune in enumerate(selected_runes):
+        # Determine if the rune is upright or reversed
+        orientation = "Upwards" if random.choice([True, False]) else "Backwards"
+        
+        # Display the rune, its meaning, order, and orientation
+        st.write(f"{i+1}. {rune.name} - {rune.description} ({orientation})")
