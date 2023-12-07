@@ -65,11 +65,14 @@ st.title("Rune Sets Explorer")
 # User input to select Aett
 selected_aett = st.selectbox("Select Aett", ["Freyr's Aett", "Heimdall's Aett", "Tyr's Aett"])
 
+# User input question
+user_question = st.text_input("Ask a question", "")
+
 # User input to select the number of runes for the reading
 num_runes = st.select_slider("Select the number of runes", [1, 2, 3])
 
 # Button to perform a rune reading
-if st.button("Ask a question"):
+if st.button("Ask the Runes"):
     # Logic to perform a rune reading based on the selected Aett
     if selected_aett == "Freyr's Aett":
         display_aett = freyrs_aett
@@ -86,16 +89,18 @@ if st.button("Ask a question"):
     for rune in selected_runes:
         st.write(rune.ascii_art)
     
-    st.success("Trown results: ")
+    st.success("Rune Reading Results:")
     
     for i, rune in enumerate(selected_runes):
         # Determine if the rune is upright or reversed
         orientation = "Upwards" if random.choice([True, False]) else "Backwards"
         
-        # Display the rune, its description, keywords, order, and orientation with appropriate prefix
+        # Display the rune, its description, keywords, order, orientation, and the user's question
         if num_runes == 1:
             st.write(f"Trown result: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
         elif num_runes == 2:
             st.write(f"{'Past' if i == 0 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
         elif num_runes == 3:
             st.write(f"{'Past' if i == 0 else 'Present' if i == 1 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+    
+    st.write(f"User Question: {user_question}")
