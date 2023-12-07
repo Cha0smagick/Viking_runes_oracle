@@ -2,6 +2,8 @@
 
 Welcome, wanderer, to the Viking Runes Oracle – an ancient and powerful Streamlit oracle that beckons brave souls to explore the mysteries of runic wisdom. Within this mystical enclave, users can tap into the energies of the Viking runic divination, gaining insights and guidance from the ancient symbols of the Norse realms.
 
+[Click here for DEMO](https://huggingface.co/spaces/cha0smagick/Viking_Runes_Oracle)
+
 ## Tome of Contents
 - [Invocation](#viking-runes-oracle)
 - [Mystic Features](#mystic-features)
