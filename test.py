@@ -80,7 +80,7 @@ selected_aett = st.selectbox("Select Aett", ["Freyr's Aett", "Heimdall's Aett", 
 user_question = st.text_input("Ask the Oracle a Question", "")
 
 # Configure Gemini API
-genai.configure(api_key='AIzaSyCVqyQJSEN3vZcYRmCogVmHxlmYkzCUxdQ')
+genai.configure(api_key='your_google_api_key')
 
 # Gemini model for text-only prompts
 gemini_model = genai.GenerativeModel('gemini-pro')
