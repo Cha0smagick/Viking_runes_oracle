@@ -65,70 +65,66 @@ all_rune_sets = [freyrs_aett, heimdalls_aett, tyrs_aett]
 
 # Streamlit App
 st.title("Norse Oracle")
+st.markdown(
+    """
+    **Author:** cha0smagick the Techno Wizard  
+    **Created for the blog:** [El Rincon Paranormal](https://elrinconparanormal.blogspot.com)  
+    **Project's main page:** [Technowizard Cha0smagick's Viking Runes Oracle](hhttps://elrinconparanormal.blogspot.com/2023/12)  
+    """
+)
 
-# Sidebar
-st.sidebar.header("Select Rune Set")
-selected_set = st.sidebar.selectbox("Choose a Rune Set", all_rune_sets)
-
-# Main App
-st.write(selected_set)
-
-# Function to generate random runes
-def generate_runes(num_runes):
-    runes = random.sample(selected_set.runes, num_runes)
-    return runes
-
-# Number of runes to draw
-num_runes = st.sidebar.slider("Number of Runes to Draw", min_value=1, max_value=3, value=1)
-
-# Draw Runes
-draw_runes_button = st.sidebar.button("Draw Runes")
-if draw_runes_button:
-    selected_runes = generate_runes(num_runes)
-    st.sidebar.success("Runes Drawn!")
-
-    # Display ASCII representation of selected runes
-    for i, rune in enumerate(selected_runes):
-        st.sidebar.write(f"Rune {i + 1}: {rune.ascii_art}")
-        st.sidebar.write(rune.description)
-else:
-    selected_runes = []
+# User input to select Aett
+selected_aett = st.selectbox("Select Aett", ["Freyr's Aett", "Heimdall's Aett", "Tyr's Aett"])
 
 # User Question
 user_question = st.text_input("Ask the Oracle a Question", "")
 
 # Configure Gemini API
-genai.configure(api_key='google_api_key')
+genai.configure(api_key='AIzaSyCVqyQJSEN3vZcYRmCogVmHxlmYkzCUxdQ')
 
 # Gemini model for text-only prompts
 gemini_model = genai.GenerativeModel('gemini-pro')
 
-# Function to interact with Gemini API
-def ask_gemini(question, runes_info):
-    # Prepare prompt for Gemini API
-    prompt = f"act as a viking oracle and answer the question for the user. {runes_info}\n\n{question}"
+# User input to select the number of runes for the reading
+num_runes = st.select_slider("Select the number of runes", [1, 2, 3])
 
-    # Generate response from Gemini API
-    response = gemini_model.generate_content(prompt)
-
-    return response.text
-
-# Button to perform a rune reading and consult Gemini
+# Button to perform a rune reading
 if st.button("Ask the Runes"):
-    # Prepare runes information for Gemini
-    runes_info = "\n".join([f"{rune.name} - {rune.description}" for rune in selected_runes])
-
-    # Call Gemini API to get additional response
-    gemini_response = ask_gemini(user_question, runes_info)
-
-    # Display Gemini response
-    st.success("Rune Reading Results:")
-    st.write("Gemini Response:")
-    st.write(gemini_response)
-
+    # Logic to perform a rune reading based on the selected Aett
+    if selected_aett == "Freyr's Aett":
+        display_aett = freyrs_aett
+    elif selected_aett == "Heimdall's Aett":
+        display_aett = heimdalls_aett
+    elif selected_aett == "Tyr's Aett":
+        display_aett = tyrs_aett
+    
+    # Logic to perform a rune reading based on the selected number of runes
+    selected_runes = random.sample(display_aett.runes, num_runes)
+    
     # Display ASCII representation of selected runes
+    runes_display = "  ".join([rune.ascii_art for rune in selected_runes])
+    st.markdown(f"<p style='font-size:40px; font-weight:bold; text-align:center;'>{runes_display}</p>", unsafe_allow_html=True)
+    
+    st.success("Rune Reading Results:")
+    
+    # Updated code to use the Gemini API
     for i, rune in enumerate(selected_runes):
-        st.write(f"Rune {i + 1}: {rune.ascii_art}")
-        st.write(rune.description)
-
+        # Determine if the rune is upright or reversed
+        orientation = "Upwards" if random.choice([True, False]) else "Backwards"
+        
+        # Display the rune, its description, keywords, order, orientation, and the user's question
+        if num_runes == 1:
+            st.write(f"Trown result: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+        elif num_runes == 2:
+            st.write(f"{'Past' if i == 0 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+        elif num_runes == 3:
+            st.write(f"{'Past' if i == 0 else 'Present' if i == 1 else 'Future'}: {rune.name} - {rune.description} ({orientation}): {', '.join(rune.keywords)}")
+    
     st.write(f"User Question: {user_question}")
+
+    # Call the Gemini API and display the response
+    gemini_response = gemini_model.generate_content(f"act as a viking oracle and interpret the the answer and give the answer for the question for the user. {user_question} - answer: {runes_display}")
+    gemini_text = gemini_response.text
+
+    st.write("Gemini API Response:")
+    st.write(gemini_text)
